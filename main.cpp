@@ -7,8 +7,8 @@
 using namespace std;
 
 
- class address 
- {
+class address 
+{
  	private:
  	int PIN;
  	char BldgNum[10], StreetName[30],city[20];
@@ -45,7 +45,8 @@ using namespace std;
 };
 
  
- class date{
+ class date
+{
  	private:
 	 int day, year;
  	 char  month[10];
@@ -75,7 +76,7 @@ public:
 			cout<<"month: "<<month<<endl;
 			cout<<"year: "<<year<<endl;
 		}
- };
+};
  
 
  
