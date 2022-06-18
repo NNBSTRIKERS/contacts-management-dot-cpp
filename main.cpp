@@ -233,7 +233,7 @@ int main()
        
     	case 1: 
     	//ADDIND OF NORMAL_CONCT_DETAILS
-    		file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+    		file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
 			gh.addcontact();
     	    cin.get(ch);
         	file.write((char *) &gh, sizeof(gh));
@@ -243,7 +243,7 @@ int main()
     		
     	case 2:
     		 
-    		 file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+    		 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
 			 file.seekg(0,ios::beg);
                  cout<<"\n\nRecords in Book\n";
                  while(file){
@@ -257,7 +257,7 @@ int main()
     		break;
    	case 3:
 		    //Search Tel. no. when person name is known.
-		    	 file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+		    	 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
                  cout<<"\n\nEnter Name : ";
                  cin>>nm;
                  file.seekg(0,ios::beg);
@@ -281,7 +281,7 @@ int main()
     	case 4: //Update Telephone No.
     	{
 		
-    			file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+    			file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
                  cout<<"\n\nEnter mobile no : ";
                  cin>>nm;
                  file.seekg(0,ios::beg);
@@ -328,9 +328,9 @@ int main()
 				cout<<endl<<endl<<"Please Enter The contact #: ";
 				cin>>num;
 				//fp.open("contactBook.dat",ios::in|ios::out);
-				file.open("D:\\address.txt", ios::in | ios::out );
+				file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::in | ios::out );
 				//fstream fp2;
-				fp2.open("D:\\temp.txt",ios::out);
+				fp2.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt",ios::out);
 				file.seekg(0,ios::beg);
 				while(file.read((char*)&gh,sizeof(gh)))
 					{
@@ -341,9 +341,9 @@ int main()
 					}
 						fp2.close();
 						file.close();
-					remove("D:\\address.txt");
-					//rename("D:\\temp.txt","D:\\address.txt");
-					if(rename("D:\\temp.txt","D:\\address.txt") != 0)
+					remove("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt");
+					   //rename("\\temp.txt","\\address.txt");
+					if(rename("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt","C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt") != 0)
 						perror("Error renaming file");
 					else
 						cout << "File renamed successfully";
@@ -356,7 +356,7 @@ int main()
     	
 		case 6:		
 			//ADDIND OF OFFICE_CONCT_DETAILS	
-					file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+					file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
 					bn.addOffContact();
     	    		cin.get(ch);
         			file.write((char *) &bn, sizeof(bn));
@@ -365,7 +365,7 @@ int main()
 				
 		case 7:
     		 
-    		 file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+    		 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
 			 file.seekg(0,ios::beg);
                  cout<<"\n\nRecords in Book\n";
                  while(file){
@@ -380,7 +380,7 @@ int main()
     		
    	case 8:
 		    //Search Tel. no. when person name is known.
-		    	 file.open("D:\\address.txt", ios::ate | ios::in | ios::out );
+		    	 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
                  cout<<"\n\nEnter Name : ";
                  cin>>nm;
                  file.seekg(0,ios::beg);
@@ -452,9 +452,9 @@ int main()
 				cout<<endl<<endl<<"Please Enter The contact #: ";
 				cin>>num;
 				//fp.open("contactBook.dat",ios::in|ios::out);
-				file.open("D:\\address.txt", ios::in | ios::out );
+				file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::in | ios::out );
 				//fstream fp2;
-				fp2.open("D:\\temp.txt",ios::out);
+				fp2.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt",ios::out);
 				file.seekg(0,ios::beg);
 				while(file.read((char*)&bn,sizeof(bn)))
 					{
@@ -465,9 +465,9 @@ int main()
 					}
 						fp2.close();
 						file.close();
-					remove("D:\\address.txt");
+					remove("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt");
 					//rename("D:\\temp.txt","D:\\address.txt");
-					if(rename("D:\\temp.txt","D:\\address.txt") != 0)
+					if(rename("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt","C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt") != 0)
 						perror("Error renaming file");
 					else
 						cout << "File renamed successfully";
