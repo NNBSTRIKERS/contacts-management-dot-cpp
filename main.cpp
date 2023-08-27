@@ -1,211 +1,27 @@
-#include<fstream>
-#include<conio.h>
-#include<string.h>
-#include<iomanip>
-#include<iostream>
- 
+#include <iostream>
+#include <string.h>
+#include <fstream>
+#include <iomanip>
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+
+#include "Contact.h"
+#include "OfficeContact.h"
+#include "date.h"
+#include "address.h"
+
+
 using namespace std;
 
-
-class address 
+int main() 
 {
- 	private:
- 	int PIN;
- 	char BldgNum[10], StreetName[30],city[20];
-	
-		public:
-	 
- 	void add2(void)
- 	{
-	        cout<<"BldgNum: ";
-            cin>>BldgNum;
-            
-            cout<<"StreetName: ";
-            cin.ignore();
-            cin>>StreetName;
-            
-			cout<<"city: ";
-            cin.ignore();
-            cin>>city;
- 
-            cout<<"PIN: ";
-            cin.ignore();
-            cin>>PIN;
-        }
-        
-        void printadd(void)
-		{
-			cout<<"BldgNum: "<<BldgNum<<endl;
-			cout<<"StreetName: "<<StreetName<<endl;
-			cout<<"city: "<<city<<endl;
-			cout<<"PIN: "<<PIN<<endl;
-		}
-        
-    
-};
-
- 
- class date
-{
- 	private:
-	 int day, year;
- 	 char  month[10];
- 	
-public:
-	
- 	void dat()
- 	{
-	
- 	 cout<<"day: ";
-            cin.ignore();
-            cin>>day;
-            
-    cout<<"month: ";
-            cin.ignore();
-            cin>>month;
-            
-    cout<<"year: ";
-            cin.ignore();
-            cin>>year;
-        
-    }
-    
-      void printDoB(void)
-		{
-			cout<<"day: "<<day<<endl;
-			cout<<"month: "<<month<<endl;
-			cout<<"year: "<<year<<endl;
-		}
-};
- 
-
- 
-//NORMAL DETAILS RELATED CLASS&FUNC 
-class contact 
-{
-	private:
-      address add; 
-      date dd;
-      char FName[20],LName[20],mobile[10];
-      
-    
-	
-	public:
-      int conID=0;
-      char *getname(){ return FName; }
-      char *getphno(){ return mobile; }
-
-	
-   void addcontact()
-	{
-            		
-            cout<<"conID: ";
-            cin>>conID;
-            
-            
-            cout<<"FName: ";
-            cin.ignore();
-            cin>>FName;
-            
-            cout<<"LName: ";
-            cin.ignore();
-            cin>>LName;
-            
-			cout<<"Address: ";
-           // cin.ignore();
-            add.add2();
-            
-            cout<<"mobile: ";
-            cin.ignore();
-            cin>>mobile;
- 
-            cout<<"DoB: ";
-            //cin.ignore();
-            dd.dat();
-            
-           // conID++;
-            
-			cout<<"\n";
-	}
-	
-	
-	void Viewcontact()
-	{
-		cout<<endl<<"ID #: "<<conID;
-		cout<<endl<<"Phone #: "<<mobile;
-		cout<<endl<<"FName: "<<FName;
-		cout<<endl<<"LName: "<<LName;
-		add.printadd();
-		dd.printDoB();
-		
-	
-	}
-	
-    
-   void update(char *nm,char *telno)
-   {
-      strcpy(FName,nm);
-      strcpy(mobile,telno);
-   }
-    
-   char* getPhone()
-	{
-		return mobile;
-	}
-
-	int getid()
-	{
-		return conID;
-	}
-};
- 
-
-//OFFICE RELATED CLASS&FUNC 
-class Offcontact
-{
-	address ofcadd; 
-	char Design[100], OfficeName[10], OfficeAddr[30];
-	
-	public:
-		
-	void addOffContact()
-	{
-		 cout<<"Design: ";
-            cin.ignore();
-            cin>>Design;
- 
-            cout<<"OffName: ";
-            cin.ignore();
-            cin>>OfficeName;
-            
-            cout<<"OffAddress:-"<<endl;
-            cin.ignore();
-            ofcadd.add2();
-	}
-
-void ViewOffcontact()
-	{
-		cout<<endl<<"Design: "<<Design<<endl;
-		cout<<endl<<"OfficeName: "<<OfficeName<<endl;
-    	ofcadd.printadd();
-	
-	}
-
-
-
-};
-	
- 
-
-
- 
-int main()
-{
-   system("cls");
+    system("cls");
    
-   contact gh;
+   Contact gh;
    
-   Offcontact bn;
+   OfficeContact bn;
  
     fstream file;
   
@@ -231,107 +47,108 @@ int main()
        
        //NORMAL DETAILS CORRECTION
        
-       
+      //ADDIND OF NORMAL_CONCT_DETAILS
     	case 1: 
-    	//ADDIND OF NORMAL_CONCT_DETAILS
-    		file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-			gh.addcontact();
-    	    cin.get(ch);
+    	
+    		file.open("files\address.txt", ios::ate | ios::in | ios::out );
+			gh.addContact();
+    	   cin.get(ch);
         	file.write((char *) &gh, sizeof(gh));
         	file.close();
         
     		break;
     		
     	case 2:
-    		 
-    		 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-			 file.seekg(0,ios::beg);
-                 cout<<"\n\nRecords in Book\n";
-                 while(file){
-                    file.read((char *) &gh, sizeof(gh));
-                    if(!file.eof())
-                        gh.Viewcontact();
-                 }
-                 file.clear();
-                 getch();
-                 file.close();
+
+         file.open("files\address.txt", ios::ate | ios::in | ios::out );
+         file.seekg(0,ios::beg);
+            cout<<"\n\nRecords in Book\n";
+            while(file)
+            {
+               file.read((char *) &gh, sizeof(gh));
+               if(!file.eof())
+                  gh.ViewContact();
+            }
+            file.clear();
+            getch();
+         file.close();
+
     		break;
+
    	case 3:
 		    //Search Tel. no. when person name is known.
-		    	 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-                 cout<<"\n\nEnter Name : ";
-                 cin>>nm;
-                 file.seekg(0,ios::beg);
-                 found=0;
-                 while(file.read((char *) &gh, sizeof(gh)))
-                 {
-                    if(strcmp(nm,gh.getname())==0)
-                    {
-                        found=1;
-                        gh.Viewcontact();
-                    }
-                 }
-                 file.clear();
-                 if(found==0)
-                    cout<<"\n\n---Record Not found---\n";
-                 getch();
-                 file.close();
-                 break;
+         file.open("files\address.txt", ios::ate | ios::in | ios::out );
+            cout<<"\n\nEnter Name : ";
+            cin>>nm;
+         file.seekg(0,ios::beg);
+            found=0;
+            while(file.read((char *) &gh, sizeof(gh)))
+            {
+               if(strcmp(nm,gh.getname())==0)
+               {
+                  found=1;
+                  gh.ViewContact();
+               }
+            }
+         file.clear();
+            if(found==0)
+               cout<<"\n\n---Record Not found---\n";
+            getch();
+         file.close();
+            break;
 			
     		break;
     	case 4: //Update Telephone No.
     	{
 		
-    			file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-                 cout<<"\n\nEnter mobile no : ";
-                 cin>>nm;
-                 file.seekg(0,ios::beg);
-                 found=0;
-                 int cnt=0;
-                 while(file.read((char *) &gh, sizeof(gh)))
-                 {
-                    cnt++;
-                    if(strcmp(nm,gh.getPhone())==0)
-                    {
-                        found=1;
-                        break;
-                    }
-                 }
-                 file.clear();
-                 if(found==0)
-                    cout<<"\n\n---Record Not found---\n";
-                 else
-                 {
-                    int location = (cnt-1) * sizeof(gh);
-                    cin.get(ch);
-                    if(file.eof())
-                        file.clear();
+         file.open("files\address.txt", ios::ate | ios::in | ios::out );
+            cout<<"\n\nEnter mobile no : ";
+            cin>>nm;
+         file.seekg(0,ios::beg);
+            found=0;
+            int cnt=0;
+            while(file.read((char *) &gh, sizeof(gh)))
+            {
+               cnt++;
+               if(strcmp(nm,gh.getPhone())==0)
+               {
+                  found=1;
+                  break;
+               }
+            }
+         file.clear();
+            if(found==0)
+               cout<<"\n\n---Record Not found---\n";
+            else
+            {
+               int location = (cnt-1) * sizeof(gh);
+               cin.get(ch);
+               if(file.eof())
+                  file.clear();
 
-                    cout<<"Enter New Telephone No : ";
-                    cin>>telno;
-                    file.seekp(location);
-                    gh.update(nm,telno);
-                    file.write((char *) &gh, sizeof(gh));
-                    file.flush();
-                 }
-                 file.close();
-                 break;
+               cout<<"Enter New Telephone No : ";
+               cin>>telno;
+               file.seekp(location);
+               gh.ConcUpdate(nm,telno);
+               file.write((char *) &gh, sizeof(gh));
+               file.flush();
+            }
+         file.close();
+            break;
              
-             	}
-    		
+      }
     		
     	case 5:
     		{
-			   
     			fstream fp2;
     			int num;
 				system("cls");
 				cout<<endl<<endl<<"Please Enter The contact #: ";
 				cin>>num;
 				//fp.open("contactBook.dat",ios::in|ios::out);
-				file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::in | ios::out );
+				file.open("files\address.txt", ios::in | ios::out );
 				//fstream fp2;
-				fp2.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt",ios::out);
+				fp2.open("files\temp.txt",ios::out);
 				file.seekg(0,ios::beg);
 				while(file.read((char*)&gh,sizeof(gh)))
 					{
@@ -342,9 +159,9 @@ int main()
 					}
 						fp2.close();
 						file.close();
-					remove("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt");
+					remove("files\address.txt");
 					   //rename("\\temp.txt","\\address.txt");
-					if(rename("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt","C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt") != 0)
+					if(rename("files\temp.txt","files\address.txt") != 0)
 						perror("Error renaming file");
 					else
 						cout << "File renamed successfully";
@@ -352,13 +169,12 @@ int main()
     		}
     		break;
     	
-    	//OFFICE DETAILS CORRECTIONS
-    	
-    	
+      //OFFICE DETAILS CORRECTIONS
+   
 		case 6:		
 			//ADDIND OF OFFICE_CONCT_DETAILS	
-					file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-					bn.addOffContact();
+					file.open("files\address.txt", ios::ate | ios::in | ios::out );
+					bn.addOfficeContact();
     	    		cin.get(ch);
         			file.write((char *) &bn, sizeof(bn));
         			file.close();
@@ -366,83 +182,79 @@ int main()
 				
 		case 7:
     		 
-    		 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
+    		 file.open("files\address.txt", ios::ate | ios::in | ios::out );
 			 file.seekg(0,ios::beg);
                  cout<<"\n\nRecords in Book\n";
                  while(file){
                     file.read((char *) &bn, sizeof(bn));
                     if(!file.eof())
-                        bn.ViewOffcontact();
+                        bn.ViewOfficeContact();
                  }
                  file.clear();
                  getch();
                  file.close();
     		break;
     		
-   	case 8:
-		    //Search Tel. no. when person name is known.
-		    	 file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-                 cout<<"\n\nEnter Name : ";
-                 cin>>nm;
-                 file.seekg(0,ios::beg);
-                 found=0;
-                 while(file.read((char *) &bn, sizeof(bn)))
-                 {
-                    if(strcmp(nm,bn.getname())==0)
-                    {
-                        found=1;
-                        bn.ViewOffcontact();
-                    }
-                 }
-                 file.clear();
-                 if(found==0)
-                    cout<<"\n\n---Record Not found---\n";
-                 getch();
-                 file.close();
-                 break;
+   	// case 8:
+		//     //Search Tel. no. when person name is known.
+		//     	 file.open("files\address.txt", ios::ate | ios::in | ios::out );
+      //            cout<<"\n\nEnter Name : ";
+      //            cin>>nm;
+      //            file.seekg(0,ios::beg);
+      //            found=0;
+      //            while(file.read((char *) &bn, sizeof(bn)))
+      //            {
+      //               if(strcmp(nm,bn.getname())==0)
+      //               {
+      //                   found=1;
+      //                   bn.ViewOfficeContact();
+      //               }
+      //            }
+      //            file.clear();
+      //            if(found==0)
+      //               cout<<"\n\n---Record Not found---\n";
+      //            getch();
+      //            file.close();
+      //            break;
 			
-    		break;
+    	// 	break;
     		
-    	case 9: //Update Telephone No.
-    	{
+    	// case 9: //Update Telephone No.
 		
-    			file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::ate | ios::in | ios::out );
-            cout<<"\n\nEnter mobile no : ";
-                 cin>>nm;
-                 file.seekg(0,ios::beg);
-                 found=0;
-                 int cnt=0;
-                 while(file.read((char *) &bn, sizeof(bn)))
-                 {
-                    cnt++;
-                    if(strcmp(nm,bn.getPhone())==0)
-                    {
-                        found=1;
-                        break;
-                    }
-                 }
-                 file.clear();
-                 if(found==0)
-                    cout<<"\n\n---Record Not found---\n";
-                 else
-                 {
-                    int location = (cnt-1) * sizeof(bn);
-                    cin.get(ch);
-                    if(file.eof())
-                        file.clear();
+    	// 		file.open("files\address.txt", ios::ate | ios::in | ios::out );
+      //       cout<<"\n\nEnter mobile no : ";
+      //            cin>>nm;
+      //            file.seekg(0,ios::beg);
+      //            found=0;
+      //            int cnt=0;
+      //            while(file.read((char *) &bn, sizeof(bn)))
+      //            {
+      //               cnt++;
+      //               if(strcmp(nm,bn.getPhone())==0)
+      //               {
+      //                   found=1;
+      //                   break;
+      //               }
+      //            }
+      //            file.clear();
+      //            if(found==0)
+      //               cout<<"\n\n---Record Not found---\n";
+      //            else
+      //            {
+      //               int location = (cnt-1) * sizeof(bn);
+      //               cin.get(ch);
+      //               if(file.eof())
+      //                   file.clear();
 
-                    cout<<"Enter New Telephone No : ";
-                    cin>>telno;
-                    file.seekp(location);
-                    bn.update(nm,telno);
-                    file.write((char *) &bn, sizeof(bn));
-                    file.flush();
-                 }
-                 file.close();
-                 break;
-             
-      }
-    		
+      //               cout<<"Enter New Telephone No : ";
+      //               cin>>telno;
+      //               file.seekp(location);
+      //               bn.ConcUpdate(nm,telno);
+      //               file.write((char *) &bn, sizeof(bn));
+      //               file.flush();
+      //            }
+      //            file.close();
+      //            break;
     		
     	case 10:
     		{
@@ -453,9 +265,9 @@ int main()
 				cout<<endl<<endl<<"Please Enter The contact #: ";
 				cin>>num;
 				//fp.open("contactBook.dat",ios::in|ios::out);
-				file.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt", ios::in | ios::out );
+				file.open("files\address.txt", ios::in | ios::out );
 				//fstream fp2;
-				fp2.open("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt",ios::out);
+				fp2.open("files\temp.txt",ios::out);
 				file.seekg(0,ios::beg);
 				while(file.read((char*)&bn,sizeof(bn)))
 					{
@@ -466,9 +278,9 @@ int main()
 					}
 						fp2.close();
 						file.close();
-					remove("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt");
+					remove("files\address.txt");
 					//rename("D:\\temp.txt","D:\\address.txt");
-					if(rename("C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\temp.txt","C:\Users\LENOVO\Desktop\contact management\contacts-management-dot-cpp\address.txt") != 0)
+					if(rename("files\temp.txt","files\address.txt") != 0)
 						perror("Error renaming file");
 					else
 						cout << "File renamed successfully";
@@ -476,16 +288,10 @@ int main()
     		}
     		break;
     			
-    			
-				
-    			
     	default:
     		break;
     }
    
 }
-   
-
  return 0;
 }
- 
