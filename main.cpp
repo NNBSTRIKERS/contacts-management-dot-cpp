@@ -43,11 +43,8 @@ int main()
     	case 0: cout<<"\n\n\t\tThank you for using CMS...";
     		exit(0);
     			break;
-    			
        
-       //NORMAL DETAILS CORRECTION
-       
-      //ADDIND OF NORMAL_CONCT_DETAILS
+      //ADD NORMAL_CONCT_DETAILS
     	case 1: 
     	
     		file.open("files\address.txt", ios::ate | ios::in | ios::out );
