@@ -107,7 +107,7 @@ int main()
             while(file.read((char *) &gh, sizeof(gh)))
             {
                cnt++;
-               if(strcmp(nm,gh.getPhone())==0)
+               if(strcmp(nm,gh.getphno())==0)
                {
                   found=1;
                   break;
@@ -192,66 +192,66 @@ int main()
                  file.close();
     		break;
     		
-   	// case 8:
-		//     //Search Tel. no. when person name is known.
-		//     	 file.open("files\address.txt", ios::ate | ios::in | ios::out );
-      //            cout<<"\n\nEnter Name : ";
-      //            cin>>nm;
-      //            file.seekg(0,ios::beg);
-      //            found=0;
-      //            while(file.read((char *) &bn, sizeof(bn)))
-      //            {
-      //               if(strcmp(nm,bn.getname())==0)
-      //               {
-      //                   found=1;
-      //                   bn.ViewOfficeContact();
-      //               }
-      //            }
-      //            file.clear();
-      //            if(found==0)
-      //               cout<<"\n\n---Record Not found---\n";
-      //            getch();
-      //            file.close();
-      //            break;
+   	case 8:
+		    //Search Tel. no. when person name is known.
+		    	 file.open("files\address.txt", ios::ate | ios::in | ios::out );
+                 cout<<"\n\nEnter Name : ";
+                 cin>>nm;
+                 file.seekg(0,ios::beg);
+                 found=0;
+                 while(file.read((char *) &bn, sizeof(bn)))
+                 {
+                    if(strcmp(nm,bn.getname())==0)
+                    {
+                        found=1;
+                        bn.ViewOfficeContact();
+                    }
+                 }
+                 file.clear();
+                 if(found==0)
+                    cout<<"\n\n---Record Not found---\n";
+                 getch();
+                 file.close();
+                 break;
 			
-    	// 	break;
+    		break;
     		
-    	// case 9: //Update Telephone No.
+    	case 9: //Update Telephone No.
 		
-    	// 		file.open("files\address.txt", ios::ate | ios::in | ios::out );
-      //       cout<<"\n\nEnter mobile no : ";
-      //            cin>>nm;
-      //            file.seekg(0,ios::beg);
-      //            found=0;
-      //            int cnt=0;
-      //            while(file.read((char *) &bn, sizeof(bn)))
-      //            {
-      //               cnt++;
-      //               if(strcmp(nm,bn.getPhone())==0)
-      //               {
-      //                   found=1;
-      //                   break;
-      //               }
-      //            }
-      //            file.clear();
-      //            if(found==0)
-      //               cout<<"\n\n---Record Not found---\n";
-      //            else
-      //            {
-      //               int location = (cnt-1) * sizeof(bn);
-      //               cin.get(ch);
-      //               if(file.eof())
-      //                   file.clear();
+    			file.open("files\address.txt", ios::ate | ios::in | ios::out );
+            cout<<"\n\nEnter mobile no : ";
+                 cin>>nm;
+                 file.seekg(0,ios::beg);
+                 found=0;
+                 int cnt=0;
+                 while(file.read((char *) &bn, sizeof(bn)))
+                 {
+                    cnt++;
+                    if(strcmp(nm,bn.getphno())==0)
+                    {
+                        found=1;
+                        break;
+                    }
+                 }
+                 file.clear();
+                 if(found==0)
+                    cout<<"\n\n---Record Not found---\n";
+                 else
+                 {
+                    int location = (cnt-1) * sizeof(bn);
+                    cin.get(ch);
+                    if(file.eof())
+                        file.clear();
 
-      //               cout<<"Enter New Telephone No : ";
-      //               cin>>telno;
-      //               file.seekp(location);
-      //               bn.ConcUpdate(nm,telno);
-      //               file.write((char *) &bn, sizeof(bn));
-      //               file.flush();
-      //            }
-      //            file.close();
-      //            break;
+                    cout<<"Enter New Telephone No : ";
+                    cin>>telno;
+                    file.seekp(location);
+                    bn.ConcUpdate(nm,telno);
+                    file.write((char *) &bn, sizeof(bn));
+                    file.flush();
+                 }
+                 file.close();
+                 break;
     		
     	case 10:
     		{

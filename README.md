@@ -3,7 +3,7 @@
 
 ## Description
 
-Thi contacts-management-dot-cpp is a  contact management system (CMS) - a C++ application that allows users to manage their contacts, including both personal and office contacts. It provides features such as adding, listing, searching, editing, and deleting contacts. This project is a simple console-based application designed for personal contact management.
+This contacts-management-dot-cpp is a  contact management system (CMS) - a C++ application that allows users to manage their contacts, including both personal and office contacts. It provides features such as adding, listing, searching, editing, and deleting contacts. This project is a simple console-based application designed for personal contact management.
 
 ## Features
 
