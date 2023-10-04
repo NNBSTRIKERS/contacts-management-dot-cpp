@@ -31,7 +31,7 @@ Choose one or more of the above methods to contribute based on your expertise an
 
 If you encounter a bug while using the CMS, please report it by following these steps:
 
-1. Check if the bug has already been reported in the [issue tracker](https://github.com/yourusername//contacts-management-dot-cpp/issues).
+1. Check if the bug has already been reported in the [issue tracker](https://github.com/yourusername/contacts-management-dot-cpp/issues).
 
 2. If the bug is not already reported, open a new issue with a descriptive title and detailed description of the problem. Include steps to reproduce the issue and any relevant error messages.
 
@@ -39,7 +39,7 @@ If you encounter a bug while using the CMS, please report it by following these 
 
 If you have ideas for improving the CMS, we welcome your suggestions. To suggest an enhancement:
 
-1. Check if your enhancement idea is already in the [issue tracker](https://github.com/yourusername//contacts-management-dot-cpp/issues).
+1. Check if your enhancement idea is already in the [issue tracker](https://github.com/yourusername/contacts-management-dot-cpp/issues).
 
 2. If it's not already there, open a new issue and describe your enhancement idea clearly and concisely.
 
